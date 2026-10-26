@@ -179,3 +179,23 @@ def above_average_ratings(movies):
         for movie in movies
         if movie["rating"] > average
     }
+
+# ---------- Этап 7. Множества ----------
+
+
+def all_genres(movies):
+    """Множество всех уникальных жанров каталога (объединение множеств)."""
+    genres = set()
+    for movie in movies:
+        genres = genres | movie["genres"]
+    return genres
+
+
+def common_actors(movie1, movie2):
+    """Актеры, снимавшиеся в обоих фильмах (пересечение множеств)."""
+    return set(movie1["actors"]) & set(movie2["actors"])
+
+
+def genres_only_in_one(movies_a, movies_b):
+    """Жанры, которые есть в movies_a, но нет в movies_b (разность множеств)."""
+    return all_genres(movies_a) - all_genres(movies_b)
