@@ -49,3 +49,27 @@ def duration_in_hours(minutes):
     hours = minutes // 60
     rest_minutes = minutes % 60
     return f"{hours}ч {rest_minutes}м"
+
+# ---------- Этап 2. Условия и match ----------
+
+
+def rating_tier(rating):
+    """Категория фильма по оценке."""
+    if rating >= 9:
+        return "шедевр"
+    elif rating >= 7:
+        return "хорошо"
+    else:
+        # тернарный оператор
+        return "средне" if rating >= 5 else "слабо"
+
+
+def decade_label(year):
+    """Метка по году выпуска через match."""
+    match year:
+        case _ if year > 2020:
+            return "новые"
+        case _ if year >= 2015:
+            return "недавние"
+        case _:
+            return "старые"
