@@ -199,3 +199,17 @@ def common_actors(movie1, movie2):
 def genres_only_in_one(movies_a, movies_b):
     """Жанры, которые есть в movies_a, но нет в movies_b (разность множеств)."""
     return all_genres(movies_a) - all_genres(movies_b)
+
+# ---------- Этап 8. Итераторы и генераторы ----------
+
+
+def iter_high_rated(movies, min_rating=8.0):
+    """Лениво отдает фильмы с рейтингом не ниже min_rating."""
+    for movie in movies:
+        if movie["rating"] >= min_rating:
+            yield movie
+
+
+def total_duration_high_rated(movies):
+    """Суммарная длительность фильмов с рейтингом выше 7 (генераторное выражение)."""
+    return sum(movie["duration_min"] for movie in movies if movie["rating"] > 7)
